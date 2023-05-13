@@ -1,0 +1,23 @@
+.banner {
+  background-image: url("https://preview.codeless.co/kafe/default/wp-content/uploads/2022/06/BG-11-1_11zon.png");
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
+  background-blend-mode: darken;
+}
+.banner_content {
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.301);
+}
+h1 {
+  font-size: 4rem;
+}
+
+.menu,
+.subMenu {
+  padding: 50px 0;
+}
+.footer {
+  height: 40vh;
+  background-color: black;
+}
