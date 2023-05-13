@@ -16,7 +16,7 @@ const AddCoffe = () => {
       description,
     };
     console.log(item);
-    fetch("http://localhost:5000/addItems", {
+    fetch("https://sj-task-server.vercel.app/addItems", {
       method: "POST",
       headers: {
         "content-type": "application/json",

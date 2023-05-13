@@ -6,7 +6,7 @@ const SubMenu = () => {
   const [coffes, setCoffes] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/getItems")
+    fetch("https://sj-task-server.vercel.app/getItems")
       .then((res) => res.json())
       .then((data) => setCoffes(data.slice(0, 3)));
   }, []);

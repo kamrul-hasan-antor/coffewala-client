@@ -9,7 +9,7 @@ const Footer = () => {
           <p>Donec et nibh maximus, congue est eu</p>
         </div>
         <p>PHONE : +88019 339 702 520</p>
-        <p>ADDRESS : 30 North West New</p>{" "}
+        <p>ADDRESS : 30 North West New</p>
       </div>
     </div>
   );
