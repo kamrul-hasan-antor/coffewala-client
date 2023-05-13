@@ -1,15 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
-  const [loginError, setLoginError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const { googleProvider, logInUser } = useContext(AuthContext);
   const googleNewProvider = new GoogleAuthProvider();
+  //   console.log(googleNewProvider);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -21,11 +21,25 @@ const Login = () => {
         const user = res.user;
         console.log(user);
         form.reset();
-        setLoginError("");
+
         navigate(from, { replace: true });
       })
       .catch((err) => setLoginError(err.message));
   };
+
+  const handleGoogleSignIn = () => {
+    googleProvider(googleNewProvider)
+      .then((res) => {
+        console.log(res.user);
+
+        // navigate(from, { replace: true });
+      })
+
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
   return (
     <div className="mx-auto  py-5">
       <div className="container mx-auto">
@@ -67,7 +81,13 @@ const Login = () => {
 
               <div className="mb-3 text-center">
                 New in Tech Guru? Please{" "}
-                <Link to="/register">Register Now</Link>{" "}
+                <Link to="/register">Register Now</Link> or Login with
+                <span
+                  onClick={handleGoogleSignIn}
+                  className="text-primary ms-1 text-decoration-underline google_btn"
+                >
+                  Google
+                </span>
               </div>
               <button type="submit" className="btn btn-primary w-100">
                 Log In
