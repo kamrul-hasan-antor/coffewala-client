@@ -5,6 +5,7 @@ import MainPage from "./pages/MainPage";
 import Menu from "./pages/Menu";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const router = createBrowserRouter([
@@ -18,7 +19,11 @@ function App() {
         },
         {
           path: "/menu",
-          element: <Menu />,
+          element: (
+            <PrivateRoute>
+              <Menu />
+            </PrivateRoute>
+          ),
         },
         {
           path: "/login",
