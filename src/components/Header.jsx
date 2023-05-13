@@ -13,32 +13,46 @@ const Header = () => {
       .then(() => {})
       .catch((err) => console.log(err));
   };
-  console.log(user);
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="#home" className="fs-3">
-          CoffeWala
+        <Navbar.Brand className="fs-3">
+          <Link to="/" className="px-2 text-decoration-none text-dark">
+            CoffeeWala
+          </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto ">
+          <Nav className="ms-auto">
             <Link to="/" className="px-2 text-decoration-none text-dark">
               Home
             </Link>
-            <Link to="/menu" className="px-2 text-decoration-none text-dark">
-              Menu
-            </Link>
+
             {user?.email ? (
-              <Link
-                onClick={handleSignOut}
-                to="/login"
-                className="px-2 text-decoration-none text-dark"
-              >
-                Logout
-              </Link>
+              <>
+                <Link
+                  to="/menu"
+                  className="px-2 text-decoration-none text-dark"
+                >
+                  Menu
+                </Link>
+                <Link
+                  to="/addItems"
+                  className="px-2 text-decoration-none text-dark"
+                >
+                  Add Items
+                </Link>
+                <Link
+                  onClick={handleSignOut}
+                  to="/login"
+                  className="px-2 text-decoration-none text-dark"
+                >
+                  Logout
+                </Link>
+              </>
             ) : (
-              <div>
+              <>
                 <Link
                   to="/login"
                   className="px-2 text-decoration-none text-dark"
@@ -51,10 +65,10 @@ const Header = () => {
                 >
                   Resister
                 </Link>
-              </div>
+              </>
             )}
             {user?.email ? (
-              <p className="px-2 text-primary text-capitalize">
+              <p className="px-2 text-primary text-capitalize mb-0">
                 {user?.displayName}
               </p>
             ) : (

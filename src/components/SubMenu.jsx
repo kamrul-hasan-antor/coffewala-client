@@ -1,27 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const SubMenu = () => {
+  const [coffes, setCoffes] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/getItems")
+      .then((res) => res.json())
+      .then((data) => setCoffes(data.slice(0, 3)));
+  }, []);
+
   return (
-    <div className="subMenu">
-      <Card style={{ width: "18rem" }}>
-        <Card.Img
-          variant="top"
-          src="https://xpressrow.com/html/cafena/cafena/assets/images/menu/menu-1.jpeg"
-        />
-        <Card.Body>
-          <Card.Title className="text-uppercase">AmERICANO COFFEE</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button variant="primary">Order Now</Button>
-        </Card.Body>
-      </Card>
+    <div className="subMenu container">
+      <h2 className="text-center mb-4">Our Popular Menu</h2>
+      <div className="row gx-3">
+        {coffes.map((coffe, i) => {
+          const { name, price, description, image } = coffe;
+          return (
+            <div className="col-md-4" key={i}>
+              <Card className="p-3 mt-3">
+                <Card.Img
+                  style={{ height: "15rem" }}
+                  variant="top"
+                  src={image}
+                />
+                <Card.Body>
+                  <Card.Title className="text-uppercase">{name}</Card.Title>
+                  <p className="mb-0">Price: ${price}</p>
+                  <Card.Text>{description.slice(0, 145)}</Card.Text>
+                </Card.Body>
+              </Card>
+            </div>
+          );
+        })}
+      </div>
       <div className="mt-4 text-center">
         <Link to="/menu">
-          <Button variant="primary">See All Menu </Button>
+          <Button variant="primary">See More </Button>
         </Link>
       </div>
     </div>

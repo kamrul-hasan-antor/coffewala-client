@@ -10,7 +10,10 @@
   background-color: rgba(0, 0, 0, 0.301);
 }
 h1 {
-  font-size: 4rem;
+  font-size: clamp(1.8rem, 5vw, 5rem);
+}
+h3 {
+  font-size: clamp(1rem, 5vw, 1.5rem);
 }
 
 .menu,

@@ -6,6 +6,7 @@ import Menu from "./pages/Menu";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import PrivateRoute from "./components/PrivateRoute";
+import AddCoffe from "./pages/AddCoffe";
 
 function App() {
   const router = createBrowserRouter([
@@ -22,6 +23,14 @@ function App() {
           element: (
             <PrivateRoute>
               <Menu />
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "/addItems",
+          element: (
+            <PrivateRoute>
+              <AddCoffe />
             </PrivateRoute>
           ),
         },

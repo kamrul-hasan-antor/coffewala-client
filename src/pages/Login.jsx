@@ -9,7 +9,6 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
   const { googleProvider, logInUser } = useContext(AuthContext);
   const googleNewProvider = new GoogleAuthProvider();
-  //   console.log(googleNewProvider);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -31,8 +30,7 @@ const Login = () => {
     googleProvider(googleNewProvider)
       .then((res) => {
         console.log(res.user);
-
-        // navigate(from, { replace: true });
+        navigate(from, { replace: true });
       })
 
       .catch((err) => {
